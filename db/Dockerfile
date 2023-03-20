@@ -1,5 +1,3 @@
-FROM postgres:13-alpine
-WORKDIR /app
-COPY ./sql/ /docker-entrypoint-initdb.d/
-
+FROM postgres:15.1
 ENV POSTGRES_PASSWORD=password
+COPY ./sql/ /docker-entrypoint-initdb.d/
