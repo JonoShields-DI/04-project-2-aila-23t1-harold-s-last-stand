@@ -10,7 +10,7 @@ on:
     branches: ["main"]
 
 jobs:
-  build:
+  run-tests-server:
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -34,9 +34,10 @@ jobs:
           cache: "npm"
           cache-dependency-path: "**/package-lock.json"
       - run: npm ci
+      - run: npm start  
       # - run: npm run build --if-present
       # - run: npm test
-      - run: npx prettier --check .
+      - run: npx prettier:check --check .
   run-tests-client:
     runs-on: ubuntu-latest
     defaults:
