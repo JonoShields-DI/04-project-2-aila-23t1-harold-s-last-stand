@@ -5,9 +5,9 @@ name: Node.js ci
 
 on:
   push:
-    branches: ["main"]
+    branches: ["main", "dm/ci-bug-fix"]
   pull_request:
-    branches: ["main"]
+    branches: ["main", "dm/ci-bug-fix"]
 
 jobs:
   run-tests-server:
@@ -20,7 +20,7 @@ jobs:
       matrix:
         node-version: [14.x, 16.x, 18.x]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
- # See matrix version syntax at https://docs.github.com/en/actions/using-jobs/using-a-matrix-for-your-jobs
+    # See matrix version syntax at https://docs.github.com/en/actions/using-jobs/using-a-matrix-for-your-jobs
     steps:
       - uses: actions/checkout@v3
         with:
@@ -34,7 +34,7 @@ jobs:
           cache: "npm"
           cache-dependency-path: "**/package-lock.json"
       - run: npm ci
-      # - run: npm start  
+      # - run: npm start
       # - run: npm run build --if-present
       # - run: npm test
       - run: npx prettier:check --check .
@@ -43,7 +43,6 @@ jobs:
     defaults:
       run:
         working-directory: "client"
-
 
     strategy:
       matrix:
