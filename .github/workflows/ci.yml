@@ -5,12 +5,12 @@ name: Node.js ci
 
 on:
   push:
-    branches: ["main", "cors-fix"]
+    branches: ["main"]
   pull_request:
-    branches: ["main", "cors-fix"]
+    branches: ["main"]
 
 jobs:
-  run-tests-server:
+  build:
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -18,7 +18,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [14,16,18]
+        node-version: [14.x, 16.x, 18.x]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
  # See matrix version syntax at https://docs.github.com/en/actions/using-jobs/using-a-matrix-for-your-jobs
     steps:
@@ -46,7 +46,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [14,16,18]
+        node-version: [14.x, 16.x, 18.x]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
         # See matrix version syntax at https://docs.github.com/en/actions/using-jobs/using-a-matrix-for-your-jobs
 
