@@ -1,10 +1,9 @@
-FROM node:16-alpine
+FROM node:14-alpine
 WORKDIR /app
-COPY . /app
-
+COPY package*.json /app/
+RUN ["npm", "install"]
+COPY . /app/
 EXPOSE 5001
 
-RUN ["npm", "install"]
-CMD ["npm", "start"]
 
-ENTRYPOINT [ "npm", "run", "dev" ]
+ENTRYPOINT [ "npm", "run", "dev", "start" ]
