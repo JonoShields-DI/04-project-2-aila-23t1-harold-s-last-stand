@@ -5,9 +5,9 @@ name: Node.js ci
 
 on:
   push:
-    branches: ["main"]
+    branches: ["main", "cors-fix"]
   pull_request:
-    branches: ["main"]
+    branches: ["main", "cors-fix"]
 
 jobs:
   run-tests-server:
