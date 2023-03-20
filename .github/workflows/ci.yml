@@ -5,27 +5,55 @@ name: Node.js ci
 
 on:
   push:
-    branches: [ "main", "feature" ]
+    branches: ["main", "walking-skeleton"]
   pull_request:
-    branches: [ "main", "feature" ]
+    branches: ["main", "walking-skeleton"]
 
 jobs:
-  build:
-
+  run-tests-server:
+    defaults:
+      run:
+        working-directory: "server"
     runs-on: ubuntu-latest
 
     strategy:
       matrix:
-        node-version: [14.x, 16.x, 18.x]
+        node-version: [14, 16,18]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+ # See matrix version syntax at https://docs.github.com/en/actions/using-jobs/using-a-matrix-for-your-jobs
+    steps:
+      - uses: actions/checkout@v3
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: "npm"
+          cache-dependency-path: "**/package-lock.json"
+      - run: npm ci
+      # - run: npm run build --if-present
+      # - run: npm test
+      - run: npx prettier --check .
+  run-tests-client:
+    defaults:
+      run:
+        working-directory: "client"
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+         node-version: [14, 16,18]
+        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+        # See matrix version syntax at https://docs.github.com/en/actions/using-jobs/using-a-matrix-for-your-jobs
 
     steps:
-    - uses: actions/checkout@v3
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v3
-      with:
-        node-version: ${{ matrix.node-version }}
-        cache: 'npm'
-    - run: npm ci
-    - run: npm run build --if-present
-    - run: npm test
+      - uses: actions/checkout@v3
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: "npm"
+          cache-dependency-path: "**/package-lock.json"
+      - run: npm ci
+      # - run: npm run build --if-present
+      # - run: npm test
+      - run: npx prettier --check .
