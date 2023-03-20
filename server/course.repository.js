@@ -5,8 +5,8 @@ INSERT INTO courses
 (description, name, price) 
 VALUES($1, $2, $3)
 RETURNING *`;
-
-const allCourses = `SELECT * FROM courses`;
+ 
+const allCourses = ` SELECT * FROM courses`;
 
 module.exports = {
    addCourse: async () => {

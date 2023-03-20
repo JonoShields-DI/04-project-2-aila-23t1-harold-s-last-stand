@@ -25,11 +25,10 @@ app.post("/",   (req, res, next) => {
 next()
 });
 
-app.get("/",  async (req, res, next) => {
-    // const allCourses = courseRepository.getAllCourses();
-   const allCourses = await db.query(` SELECT * FROM courses`)
-    res.status(200).json(allCourses.rows);
-    next()
+app.get("/", async (req, res) => {
+   const allCourses = await courseRepository.getAllCourses();
+  return res.status(200).json(allCourses);
+
 });
 
 app.get("/test", (req, res, next) => {
