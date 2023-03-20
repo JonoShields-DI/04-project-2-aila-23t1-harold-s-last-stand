@@ -5,6 +5,8 @@ services:
       context: ./client
     ports:
       - "3000:3000"
+    environment:
+      - REACT_APP_API_URL=http://localhost:5001
     depends_on:
       - server
     volumes:
@@ -16,6 +18,7 @@ services:
     ports:
       - "5001:5001"
     environment:
+      - API_PORT=5001
       - DATABASE_URL=postgres://postgres:password@db:5432/postgres
     command: npm run start
     depends_on:
