@@ -15,6 +15,9 @@ services:
       context: ./server
     ports:
       - "5001:5001"
+    environment:
+      - DATABASE_URL=postgres://postgres:password@db:5432/postgres
+    command: npm run start
     depends_on:
       - db
     volumes:
@@ -25,5 +28,7 @@ services:
       context: ./db
     ports:
       - "5432:5432"
+    environment:
+      POSTGRES_PASSWORD: password
     volumes:
       - ./db:/sql
