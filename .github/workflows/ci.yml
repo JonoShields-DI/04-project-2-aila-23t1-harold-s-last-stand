@@ -11,10 +11,10 @@ on:
 
 jobs:
   run-tests-server:
+    runs-on: ubuntu-latest
     defaults:
       run:
         working-directory: "server"
-    runs-on: ubuntu-latest
 
     strategy:
       matrix:
@@ -38,10 +38,11 @@ jobs:
       # - run: npm test
       - run: npx prettier --check .
   run-tests-client:
+    runs-on: ubuntu-latest
     defaults:
       run:
         working-directory: "client"
-    runs-on: ubuntu-latest
+
 
     strategy:
       matrix:
