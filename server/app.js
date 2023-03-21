@@ -1,12 +1,12 @@
 const express = require("express");
 const cors = require("cors");
-
 const app = express();
 
 const courseRepository = require("./course.repository");
 
 app.use(cors());
 app.use(express.json());
+
 app.post("/", async (req, res) => {
   const { description, name, price } = req.body;
 
