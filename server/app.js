@@ -9,20 +9,36 @@ app.use(cors());
 app.use(express.json());
 
 
-app.post("/",   (req, res, next) => {
+
+// let mockCourse = {
+// description: "lorem",
+// location: "Wellington",
+// name: "ipsum",
+// price: "$20.00",
+// teachers: "Harold",
+// }
+
+
+app.post("/", async (req, res) => {
   const { description, name, price } = req.body;
-    const newCourse = courseRepository.addCourse(
+
+  try {
+    const newCourse = await courseRepository.addCourse(
       description,
       name,
       price
     );
+
     const response = {
       name: newCourse.name,
       description: newCourse.description,
       price: newCourse.price,
     };
-    res.json(response);
-next()
+
+    return res.json(response);
+  } catch (error) {
+    throw Error(error);
+  }
 });
 
 app.get("/", async (req, res) => {
