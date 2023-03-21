@@ -1,7 +1,10 @@
 const api = {
   // tests post requests to api (no db)
   postRequest: async () => {
-    const response = await fetch(`http://localhost:5001/test`, {
+    const response = await fetch(
+      // `http://localhost:5001/test` 
+      `/test`, 
+      {
       method: "POST",
       headers: {
         Accept: "application/json",
@@ -21,7 +24,10 @@ const api = {
       price,
     };
 
-    const response = await fetch(`http://localhost:5001/`, {
+    const response = await fetch(
+      // `http://localhost:5001/`,
+      "/", 
+      {
       method: "POST",
       headers: {
         Accept: "application/json",
@@ -37,7 +43,10 @@ const api = {
   },
 
   getCourses: async () => {
-    const response = await fetch(`http://localhost:5001`, {
+    const response = await fetch(
+      // `http://localhost:5001`, 
+      "/",
+      {
       method: "GET",
     });
     console.log(response);
@@ -49,7 +58,10 @@ const api = {
 
   // tests get requests to api (no db)
   getRequest: async () => {
-    const response = await fetch(`http://localhost:5001/test`, {
+    const response = await fetch(
+      // `http://localhost:5001/test`, 
+      `/test`,
+      {
       method: "GET",
     });
     const result = await response.json();
