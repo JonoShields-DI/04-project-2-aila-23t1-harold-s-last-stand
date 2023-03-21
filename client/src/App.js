@@ -15,11 +15,11 @@ const App = () => {
     setAddCourse(alert(response));
   };
 
-   const handleGetCourses = async (e) => {
-     e.preventDefault();
-     const response = await api.getCourses();
-     setGetCourses(alert(response));
-   };
+  const handleGetCourses = async (e) => {
+    e.preventDefault();
+    const response = await api.getCourses();
+    setGetCourses(alert(response));
+  };
 
   const handlePostRequest = async (e) => {
     e.preventDefault();

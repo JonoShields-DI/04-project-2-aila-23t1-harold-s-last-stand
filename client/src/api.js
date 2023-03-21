@@ -41,10 +41,10 @@ const api = {
       method: "GET",
     });
     console.log(response);
-     const result = await response.json();
-     const courses = result[0];
-     console.log(courses);
-     return courses;
+    const result = await response.json();
+    const courses = result[0];
+    console.log(courses);
+    return courses;
   },
 
   // tests get requests to api (no db)

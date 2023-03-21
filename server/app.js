@@ -1,14 +1,12 @@
 const express = require("express");
 const cors = require("cors");
-const db = require("./db")
+
 const app = express();
 
 const courseRepository = require("./course.repository");
 
 app.use(cors());
 app.use(express.json());
-
-
 
 // let mockCourse = {
 // description: "lorem",
@@ -17,7 +15,6 @@ app.use(express.json());
 // price: "$20.00",
 // teachers: "Harold",
 // }
-
 
 app.post("/", async (req, res) => {
   const { description, name, price } = req.body;
@@ -42,9 +39,8 @@ app.post("/", async (req, res) => {
 });
 
 app.get("/", async (req, res) => {
-   const allCourses = await courseRepository.getAllCourses();
+  const allCourses = await courseRepository.getAllCourses();
   return res.status(200).json(allCourses);
-
 });
 
 app.get("/test", (req, res, next) => {
