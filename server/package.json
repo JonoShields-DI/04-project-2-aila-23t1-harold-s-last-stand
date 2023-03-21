@@ -6,7 +6,9 @@
   "private": "true",
   "scripts": {
     "start": "nodemon index.js",
-    "prettier:check": "prettier --check '**/*.js'"
+    "prettier:check": "prettier --check '**/*.js'",
+    "test": "jest --colors --verbose",
+    "pretty-quick": "pretty-quick"
   },
   "dependencies": {
     "cors": "^2.8.5",
@@ -17,6 +19,8 @@
   "devDependencies": {
     "jest": "^29.5.0",
     "nodemon": "^2.0.21",
-    "prettier": "2.8.4"
+    "prettier": "^2.8.4",
+    "pretty-quick": "^3.1.3",
+    "supertest": "^6.3.3"
   }
 }
