@@ -7,15 +7,6 @@ const courseRepository = require("./course.repository");
 
 app.use(cors());
 app.use(express.json());
-
-// let mockCourse = {
-// description: "lorem",
-// location: "Wellington",
-// name: "ipsum",
-// price: "$20.00",
-// teachers: "Harold",
-// }
-
 app.post("/", async (req, res) => {
   const { description, name, price } = req.body;
 
