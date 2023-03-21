@@ -1,11 +1,12 @@
 const { Pool } = require("pg");
 
 const pool = new Pool({
-  host: "db",
-  user: "postgres",
-  password: "password",
-  database: "postgres",
-  port: "5432",
+  connectionString: process.env.DATABASE_URL,
+  // host: "db",
+  // user: "postgres",
+  // password: "password",
+  // database: "postgres",
+  // port: "5432",
   max: 20,
   idleTimeoutMillis: 30000,
   connectionTimeoutMillis: 2000,
