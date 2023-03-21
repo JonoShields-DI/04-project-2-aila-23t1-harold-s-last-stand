@@ -18,7 +18,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [14.x, 16.x, 18.x]
+        node-version: [16.x, 18.x]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
     # See matrix version syntax at https://docs.github.com/en/actions/using-jobs/using-a-matrix-for-your-jobs
     steps:
@@ -30,10 +30,8 @@ jobs:
           cache: "npm"
           cache-dependency-path: "**/package-lock.json"
       - run: npm ci
-      # - run: npm start
-      # - run: npm run build --if-present
-      # - run: npm test
-      - run: npx prettier:check --check .
+      - run: npm run build --if-present
+      - run: npm test
   run-tests-client:
     runs-on: ubuntu-latest
     defaults:
@@ -42,7 +40,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [14.x, 16.x, 18.x]
+        node-version: [16.x, 18.x]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
         # See matrix version syntax at https://docs.github.com/en/actions/using-jobs/using-a-matrix-for-your-jobs
 
@@ -55,6 +53,6 @@ jobs:
           cache: "npm"
           cache-dependency-path: "**/package-lock.json"
       - run: npm ci
-      # - run: npm run build --if-present
-      # - run: npm test
+      - run: npm run build --if-present
+      - run: npm test
       - run: npx prettier --check .
