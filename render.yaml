@@ -11,3 +11,16 @@ services:
         fromDatabase:
           name: db
           property: connectionString      
+  - type: web
+    name: client
+    env: static
+    buildCommand: npm run build
+    # staticPublishPath: build
+    rootDir: client
+    pullRequestPreviewsEnabled: true
+    envVars:
+      - key: REACT_APP_API_URL
+        fromService:  
+          type: web
+          name: server
+          envVarKey: RENDER_EXTERNAL_URL
