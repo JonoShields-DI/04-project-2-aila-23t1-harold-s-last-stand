@@ -24,3 +24,6 @@ services:
           type: web
           name: server
           envVarKey: RENDER_EXTERNAL_URL
+databases:
+  - name: db
+    plan: free
