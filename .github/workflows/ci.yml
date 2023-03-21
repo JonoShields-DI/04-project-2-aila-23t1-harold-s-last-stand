@@ -2,9 +2,9 @@ name: Node.js ci
 
 on:
   push:
-    branches: ["main", "dm/ci-bug-fix"]
+    branches: ["main", "dm/ci-bug-fix", "fix-cors"]
   pull_request:
-    branches: ["main", "dm/ci-bug-fix"]
+    branches: ["main", "dm/ci-bug-fix", "fix-cors"]
 
 jobs:
   run-tests-server:
