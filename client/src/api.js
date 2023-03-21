@@ -37,7 +37,14 @@ const api = {
   },
 
   getCourses: async () => {
-    await fetch(`http://localhost:5001/ `);
+    const response = await fetch(`http://localhost:5001`, {
+      method: "GET",
+    });
+    console.log(response);
+    const result = await response.json();
+    const courses = result[0];
+    console.log(courses);
+    return courses;
   },
 
   // tests get requests to api (no db)

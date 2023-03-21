@@ -1,6 +1,5 @@
 const express = require("express");
 const cors = require("cors");
-const db = require("./db");
 const app = express();
 
 const courseRepository = require("./course.repository");
@@ -8,23 +7,31 @@ const courseRepository = require("./course.repository");
 app.use(cors());
 app.use(express.json());
 
-app.post("/", (req, res, next) => {
+app.post("/", async (req, res) => {
   const { description, name, price } = req.body;
-  const newCourse = courseRepository.addCourse(description, name, price);
-  const response = {
-    name: newCourse.name,
-    description: newCourse.description,
-    price: newCourse.price,
-  };
-  res.json(response);
-  next();
+
+  try {
+    const newCourse = await courseRepository.addCourse(
+      description,
+      name,
+      price
+    );
+
+    const response = {
+      name: newCourse.name,
+      description: newCourse.description,
+      price: newCourse.price,
+    };
+
+    return res.json(response);
+  } catch (error) {
+    throw Error(error);
+  }
 });
 
-app.get("/", async (req, res, next) => {
-  // const allCourses = courseRepository.getAllCourses();
-  const allCourses = await db.query(` SELECT * FROM courses`);
-  res.status(200).json(allCourses.rows);
-  next();
+app.get("/", async (req, res) => {
+  const allCourses = await courseRepository.getAllCourses();
+  return res.status(200).json(allCourses);
 });
 
 app.get("/test", (req, res, next) => {
