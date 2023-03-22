@@ -1,16 +1,6 @@
 services:
-  - type: web
-    name: server
-    plan: free
-    env: docker
-    rootDir: server
-    envVars:
-      - key: API_PORT
-        value: 5001
-      - key: DATABASE_URL
-        fromDatabase:
-          name: db
-          property: connectionString      
+  
+  #client
   - type: web
     name: client
     env: static
@@ -23,7 +13,22 @@ services:
         fromService:  
           type: web
           name: server
-          envVarKey: RENDER_EXTERNAL_URL
+          envVarKey: RENDER_EXTERNAL_URL  
+ 
+  # server
+  - type: web
+    name: server
+    plan: free
+    env: docker
+    rootDir: server
+    envVars:
+      - key: API_PORT
+        value: 5001
+      - key: DATABASE_URL
+        fromDatabase:
+          name: db
+          property: connectionString  
+   
 databases:
   - name: db
     plan: free
