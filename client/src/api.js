@@ -1,33 +1,11 @@
 const api = {
-  // tests post requests to api (no db)
-  postRequest: async () => {
-    const response = await fetch(
-      // `http://localhost:5001/test` 
-      `/test`, 
-      {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-    });
-    const result = await response.json();
-    const newTestMessage = result.message;
-    console.log(newTestMessage);
-    return newTestMessage;
-  },
-  // adds course to api db
-  addNewCourse: async (name, description, price) => {
+  addNewCourse: async () => {
     const course = {
-      name,
-      description,
-      price,
+      name: "Harold's Last Course",
+      description: "You thought you knew everything, didn't you?",
     };
 
-    const response = await fetch(
-      // `http://localhost:5001/`,
-      "/", 
-      {
+    const response = await fetch(`http://localhost:5001/`, {
       method: "POST",
       headers: {
         Accept: "application/json",
@@ -35,39 +13,26 @@ const api = {
       },
       body: JSON.stringify(course),
     });
-
     const result = await response.json();
+    console.log(result);
     const newCourse = result;
-    console.log(newCourse);
     return newCourse;
   },
 
-  getCourses: async () => {
+  getCourses: async (body) => {
     const response = await fetch(
-      // `http://localhost:5001`, 
-      "/",
+      // `http://localhost:5001`,
+      `/`,
       {
-      method: "GET",
-    });
+        method: "GET",
+        body: JSON.stringify(body),
+      }
+    );
     console.log(response);
     const result = await response.json();
-    const courses = result[0];
+    const courses = result;
     console.log(courses);
     return courses;
-  },
-
-  // tests get requests to api (no db)
-  getRequest: async () => {
-    const response = await fetch(
-      // `http://localhost:5001/test`, 
-      `/test`,
-      {
-      method: "GET",
-    });
-    const result = await response.json();
-    const newTestMessage = result.message;
-    console.log(newTestMessage);
-    return newTestMessage;
   },
 };
 
