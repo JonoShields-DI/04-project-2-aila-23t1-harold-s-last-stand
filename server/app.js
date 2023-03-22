@@ -31,10 +31,13 @@ app.post("/", async (req, res) => {
 
 app.get("/", async (req, res) => {
   const allCourses = await courseRepository.getAllCourses();
+  console.log("get all");
   return res.status(200).json(allCourses);
 });
 
+
 app.get("/test", (req, res, next) => {
+  console.log("get test");
   res.send({ message: "AILA api is getting some courses! 🦒🦒🦒" });
   next();
 });
