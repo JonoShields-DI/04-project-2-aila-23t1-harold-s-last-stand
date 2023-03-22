@@ -1,5 +1,8 @@
 const api = {
-  addNewCourse: async () => {
+  
+  addNewCourse: async () =>
+  {
+    const REACT_APP_URL = `http://localhost:5001/`;
     const course = {
       name: "Harold's Last Course",
       description: "You thought you knew everything, didn't you?",
@@ -8,7 +11,7 @@ const api = {
 
     await fetch(
       // `/`,
-      `http://localhost:5001/`,
+      `${REACT_APP_URL}/`,
       {
         method: "POST",
         headers: {
@@ -36,9 +39,10 @@ const api = {
   },
 
   getCourses: async () => {
+    const REACT_APP_URL = `http://localhost:5001/`;
     const response = await fetch(
       // `/`,
-      `http://localhost:5001`,
+       `${REACT_APP_URL}/`,
       {
         method: "GET",
       }
