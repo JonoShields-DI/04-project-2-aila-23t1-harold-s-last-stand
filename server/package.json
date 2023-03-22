@@ -6,9 +6,9 @@
   "private": "true",
   "scripts": {
     "start": "node index.js",
-    "build": "npm run build",
     "prettier:check": "prettier --check '**/*.js'",
-    "test": "npm run test"
+    "test": "jest --colors --verbose",
+    "pretty-quick": "pretty-quick"
   },
   "dependencies": {
     "cors": "^2.8.5",
@@ -18,6 +18,9 @@
   },
   "devDependencies": {
     "jest": "^29.5.0",
-    "prettier": "2.8.4"
+    "nodemon": "^2.0.21",
+    "prettier": "^2.8.4",
+    "pretty-quick": "^3.1.3",
+    "supertest": "^6.3.3"
   }
 }
