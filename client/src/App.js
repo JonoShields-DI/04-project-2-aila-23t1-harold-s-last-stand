@@ -11,7 +11,7 @@ const App = () => {
     e.preventDefault();
     const response = await api.addNewCourse();
     console.log(response);
-    setAddCourse(alert(JSON.stringify(response)));
+    setAddCourse(JSON.stringify(response));
   };
 
   const handleGetCourses = async () => {
