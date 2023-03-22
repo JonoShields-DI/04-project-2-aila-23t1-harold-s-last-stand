@@ -5,8 +5,10 @@
   "main": "index.js",
   "private": "true",
   "scripts": {
+    "start": "node index.js",
     "build": "npm run build",
-    "prettier:check": "prettier --check '**/*.js'"
+    "prettier:check": "prettier --check '**/*.js'",
+    "test": "npm run test"
   },
   "dependencies": {
     "cors": "^2.8.5",
