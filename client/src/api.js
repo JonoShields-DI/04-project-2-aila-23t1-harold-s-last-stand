@@ -3,36 +3,49 @@ const api = {
     const course = {
       name: "Harold's Last Course",
       description: "You thought you knew everything, didn't you?",
+      price: 5000000.0,
     };
 
-    const response = await fetch(`http://localhost:5001/`, {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(course),
-    });
-    const result = await response.json();
-    console.log(result);
-    const newCourse = result;
+    await fetch(
+      // `/`,
+      `http://localhost:5001/`,
+      {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        courses: JSON.stringify(course, [
+          course.name,
+          course.description,
+          course.price,
+        ]),
+      }
+    );
+
+    const newCourse = {
+      course,
+      name: course.name,
+      description: course.description,
+      price: course.price,
+    };
+
+    console.log(newCourse);
+
     return newCourse;
   },
 
-  getCourses: async (body) => {
+  getCourses: async () => {
     const response = await fetch(
-      // `http://localhost:5001`,
-      `/`,
+      // `/`,
+      `http://localhost:5001`,
       {
         method: "GET",
-        body: JSON.stringify(body),
       }
     );
-    console.log(response);
     const result = await response.json();
-    const courses = result;
-    console.log(courses);
-    return courses;
+    console.log(result);
+    return result;
   },
 };
 
