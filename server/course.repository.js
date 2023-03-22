@@ -10,7 +10,7 @@ const allCourses = ` SELECT * FROM courses`;
 
 module.exports = {
   addCourse: async () => {
-    const result = await pool.query(newCourse, values);
+    const result = await pool.query(newCourse);
     return result.rows;
   },
   getAllCourses: async () => {
