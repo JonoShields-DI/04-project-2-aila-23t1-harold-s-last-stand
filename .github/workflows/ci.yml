@@ -2,10 +2,11 @@ name: Node.js ci
 
 on:
   push:
-    branches: ["main", "group/write-unit-tests"]
-  pull_request:
-    branches: ["main", "group/write-unit-tests"]
 
+    branches: ["main","sr-deployment"]
+  pull_request:
+    branches: ["main","sr-deployment"]
+    
 jobs:
   run-tests-server:
     runs-on: ubuntu-latest

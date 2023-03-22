@@ -1,61 +1,51 @@
 const api = {
-  // tests post requests to api (no db)
-  postRequest: async () => {
-    const response = await fetch(`http://localhost:5001/test`, {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-    });
-    const result = await response.json();
-    const newTestMessage = result.message;
-    console.log(newTestMessage);
-    return newTestMessage;
-  },
-  // adds course to api db
-  addNewCourse: async (name, description, price) => {
+  addNewCourse: async () => {
+    const REACT_APP_URL = `http://localhost:5001`;
     const course = {
-      name,
-      description,
-      price,
+      name: "Harold's Last Course",
+      description: "You thought you knew everything, didn't you?",
+      price: 5000000.0,
     };
 
-    const response = await fetch(`http://localhost:5001/`, {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(course),
-    });
+    await fetch(
+      // `/`,
+      `${REACT_APP_URL}/`,
+      {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        courses: JSON.stringify(course, [
+          course.name,
+          course.description,
+          course.price,
+        ]),
+      }
+    );
 
-    const result = await response.json();
-    const newCourse = result;
-    console.log(newCourse);
+    const newCourse = {
+      course,
+      name: course.name,
+      description: course.description,
+      price: course.price,
+    };
+
     return newCourse;
   },
 
   getCourses: async () => {
-    const response = await fetch(`http://localhost:5001`, {
-      method: "GET",
-    });
-    console.log(response);
+    const REACT_APP_URL = `http://localhost:5001`;
+    const response = await fetch(
+      // `/`,
+      `${REACT_APP_URL}/`,
+      {
+        method: "GET",
+      }
+    );
     const result = await response.json();
-    const courses = result[0];
-    console.log(courses);
-    return courses;
-  },
 
-  // tests get requests to api (no db)
-  getRequest: async () => {
-    const response = await fetch(`http://localhost:5001/test`, {
-      method: "GET",
-    });
-    const result = await response.json();
-    const newTestMessage = result.message;
-    console.log(newTestMessage);
-    return newTestMessage;
+    return result;
   },
 };
 

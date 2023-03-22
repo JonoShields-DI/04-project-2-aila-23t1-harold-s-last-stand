@@ -6,31 +6,18 @@ import api from "./api";
 const App = () => {
   const [addCourse, setAddCourse] = useState({});
   const [getCourses, setGetCourses] = useState({});
-  const [postRequest, setPostRequest] = useState({});
-  const [getRequest, setGetRequest] = useState([]);
 
   const handleNewCourse = async (e) => {
     e.preventDefault();
     const response = await api.addNewCourse();
-    setAddCourse(alert(response));
+    console.log(response);
+    setAddCourse(JSON.stringify(response));
   };
 
-  const handleGetCourses = async (e) => {
-    e.preventDefault();
+  const handleGetCourses = async () => {
     const response = await api.getCourses();
-    setGetCourses(alert(response));
-  };
-
-  const handlePostRequest = async (e) => {
-    e.preventDefault();
-    const response = await api.postRequest();
-    setPostRequest(alert(response));
-  };
-
-  const handleGetRequest = async (e) => {
-    e.preventDefault();
-    const response = await api.getRequest();
-    setGetRequest(alert(response));
+    console.log(response);
+    setGetCourses(JSON.stringify(response));
   };
 
   return (
@@ -40,22 +27,6 @@ const App = () => {
         <h1>AILA</h1>
       </header>
       <main className="main-container">
-        <button
-          className="button"
-          id={"button"}
-          value={postRequest}
-          onClick={handlePostRequest}
-        >
-          POST request
-        </button>
-        <button
-          className="button"
-          id={"button"}
-          value={getRequest}
-          onClick={handleGetRequest}
-        >
-          GET request
-        </button>
         <button
           className="button"
           id={"button"}

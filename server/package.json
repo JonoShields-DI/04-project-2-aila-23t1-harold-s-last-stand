@@ -5,7 +5,7 @@
   "main": "index.js",
   "private": "true",
   "scripts": {
-    "start": "nodemon index.js",
+    "start": "node index.js",
     "prettier:check": "prettier --check '**/*.js'",
     "test": "jest --colors --verbose",
     "pretty-quick": "pretty-quick"
