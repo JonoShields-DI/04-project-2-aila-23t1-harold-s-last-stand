@@ -15,7 +15,7 @@ services:
     name: client
     env: static
     buildCommand: npm run build
-    # staticPublishPath: build
+    staticPublishPath: build
     rootDir: client
     pullRequestPreviewsEnabled: true
     envVars:
