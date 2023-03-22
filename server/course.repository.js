@@ -10,7 +10,7 @@ const allCourses = ` SELECT * FROM courses`;
 const values = [
   "You thought you knew everything, didn't you?",
   "Everything I know about law",
-  20.00
+  20.0,
 ];
 
 module.exports = {
