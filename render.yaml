@@ -19,7 +19,7 @@ services:
     rootDir: client
     pullRequestPreviewsEnabled: true
     envVars:
-      - key: REACT_APP_API_URL
+      - key: API_URL
         fromService:  
           type: web
           name: server
