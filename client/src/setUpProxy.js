@@ -8,11 +8,11 @@ module.exports = function (app) {
       changeOrigin: true,
     })
   );
-    app.use(
-      "/",
-      createProxyMiddleware({
-        target: process.env.API_URL,
-        changeOrigin: true,
-      })
-    );
+    // app.use(
+    //   "/",
+    //   createProxyMiddleware({
+    //     target: process.env.API_URL,
+    //     changeOrigin: true,
+    //   })
+    // );
 };
