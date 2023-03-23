@@ -2,7 +2,7 @@ services:
   - type: web
     name: server
     plan: free
-    env: docker
+    env: node
     rootDir: server
     envVars:
       - key: API_PORT
