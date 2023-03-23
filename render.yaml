@@ -3,6 +3,7 @@ services:
     name: server
     plan: free
     env: node
+    startCommand: npm start
     rootDir: server
     envVars:
       - key: API_PORT
