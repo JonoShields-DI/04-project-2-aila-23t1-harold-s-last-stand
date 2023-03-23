@@ -3,6 +3,7 @@ services:
     name: server
     plan: free
     env: node
+    buildCommand: npm install
     startCommand: npm start
     rootDir: server
     envVars:
